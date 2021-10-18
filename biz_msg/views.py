@@ -11,26 +11,24 @@ def get_token():
     headers = {
         'Authorization' : 'Basic' + ' ' + str(encoded_id_pw),
         'Content-Type' : 'application/json; charset=utf8',
-        'Host' : 'https://dev-api.bizppurio.com',
     }
     
     url = 'https://dev-api.bizppurio.com/v1/token'
     
-    return requests.post(url, headers=headers, timeout=10)
+    return requests.post(url, verify=False, headers=headers)
 
 
 def request_token(request):
-    try:
-        response = get_token()
-        print(response)
-        context = {
-            'response' : response,
-            'status_code' : response.status_code,
-            'response_json' : response.json()
-        }
-        
-        return render(request, 'biz_msg/response.html', context)
-    except:
-        error_message = 'Error occured'
-        return render(request, 'biz_msg/response.html', context={'error' : error_message})
+    response = get_token()
+    print(response)
+    context = {
+        'response' : response,
+        'status_code' : response.status_code,
+        'response_json' : response.json()
+    }
+    
+    return render(request, 'biz_msg/response.html', context)
+    # except:
+    #     error_message = 'Error occured'
+    #     return render(request, 'biz_msg/response.html', context={'error' : error_message})
     
