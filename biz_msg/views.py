@@ -10,10 +10,11 @@ def get_token():
     
     headers = {
         'Authorization' : 'Basic' + ' ' + str(encoded_id_pw),
-        'Content-Type' : 'application/json; charset=utf8'
+        'Content-Type' : 'application/json; charset=utf8',
+        'Host' : 'https://dev-api.bizppurio.com',
     }
     
-    url = 'https://api.bizppurio.com/v1/token'
+    url = 'https://dev-api.bizppurio.com/v1/token'
     
     return requests.post(url, headers=headers, timeout=10)
 
@@ -21,6 +22,7 @@ def get_token():
 def request_token(request):
     try:
         response = get_token()
+        print(response)
         context = {
             'response' : response,
             'status_code' : response.status_code,
