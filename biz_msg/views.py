@@ -10,7 +10,7 @@ def get_token():
     
     headers = {
         'Authorization' : 'Basic' + ' ' + str(encoded_id_pw),
-        'Content-Type' : 'application/json; charset=utf8',
+        'Content-Type' : 'application/json; charset=utf-8',
     }
     
     url = 'https://dev-api.bizppurio.com/v1/token'
