@@ -15,9 +15,9 @@ def get_token():
         'Content-type' : 'application/json; charset=utf-8',
     }
     
-    url = 'https://dev-api.bizppurio.com/v1/token'
+    url = 'https://api.bizppurio.com/v1/token'
     session = requests.Session()
-    session.verify=False
+    # session.verify=False
     # return requests.post(url, headers=headers)
     return session.post(url, headers=headers)
 
@@ -43,7 +43,7 @@ def send_FT():
         "refkey" : 'BJUom4GftTE4',
         'type' : 'sms',
         'from' : '01095106419',
-        'to' : '01064509159',
+        'to' : '01095106419',
         'content' : {
             'sms':{
                 "message" : '안녕 원명아! 지금 내 핸드폰번호로 발신하게 설정해보았어. 이 메세지가 너에게 닿길 바래.'
@@ -51,9 +51,9 @@ def send_FT():
         }
     }
     
-    url = 'https://dev-api.bizppurio.com/v3/message'
+    url = 'https://api.bizppurio.com/v3/message'
     session = requests.Session()
-    session.verify=False
+    # session.verify=False
     # return requests.post(url, headers=headers)
     return session.post(url, headers=headers, data=json.dumps(body))
 
