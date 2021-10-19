@@ -28,7 +28,7 @@ def send_FT():
     print(token_request)
     print(token_request.text)
     
-    access_token = json.loads(token_request.text)['access_token']
+    access_token = json.loads(token_request.text)['accesstoken']
     token_type = json.loads(token_request.text)['type']
     
     sender_key = '6124f5ac566eab918092388e75a4ef89e78a9515'
@@ -40,7 +40,7 @@ def send_FT():
     
     body={
         "account" : 'lookin4u_dev',
-        "refkey" : 'test1234',
+        "refkey" : 'BJUom4GftTE4',
         'type' : 'sms',
         'from' : '01095106419',
         'to' : '01064509159',
