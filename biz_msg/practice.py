@@ -65,12 +65,12 @@ def send_FT():
                     'img_url' : 'http://street-together.kro.kr/media/blog/images/2021/10/06/53DF48C5-BCC0-4D66-8AC6-5BC147094A57.jpeg',
                     'img_link' : 'http://street-together.kro.kr/'
                 },
-                'button':{
+                'button':[{
                     'name' : '테스트!!',
                     'type' : "WL",
                     'url_mobile' : 'http://street-together.kro.kr/',
                     'url_pc' : 'https://www.naver.com/'
-                }
+                }]
             }
         }
     }
