@@ -10,12 +10,13 @@ def get_token():
     
     headers = {
         'Authorization' : 'Basic' + ' ' + str(encoded_id_pw),
-        'Content-Type' : 'application/json; charset=utf-8',
+        'Content-type' : 'application/json; charset=utf-8',
     }
     
     url = 'https://dev-api.bizppurio.com/v1/token'
+    session = requests.Session()
     
-    return requests.post(url, verify=False, headers=headers)
+    return session.post(url, headers=headers)
 
 
 def request_token(request):
