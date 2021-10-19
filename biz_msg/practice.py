@@ -1,15 +1,9 @@
 import requests
 import base64
 import ssl
+import json
 # Create your views here.
 ssl._create_default_https_context = ssl._create_unverified_context
-
-def test_req():
-    resp = requests.get('https://www.naver.com/')
-    print(resp)
-    print(resp.status_code)
-    print(resp.text[:100])
-    return resp
 
 def get_token():
     dev_id = 'lookin4u_dev'
@@ -26,14 +20,45 @@ def get_token():
     session.verify=False
     # return requests.post(url, headers=headers)
     return session.post(url, headers=headers)
+
+
+def send_FT():
+    token_request = get_token()
     
-a = test_req()
+    print(token_request)
+    print(token_request.text)
+    
+    access_token = json.loads(token_request.text)['access_token']
+    token_type = json.loads(token_request.text)['type']
+    
+    sender_key = '6124f5ac566eab918092388e75a4ef89e78a9515'
+    
+    headers = {
+        'Authorization' : '{} {}'.format(token_type, access_token),
+        'Content-type' : 'application/json; charset=utf-8',
+    }
+    
+    body={
+        "account" : 'lookin4u_dev',
+        "refkey" : 'test1234',
+        'type' : 'sms',
+        'from' : '01095106419',
+        'to' : '01064509159',
+        'content' : {
+            'sms':{
+                "message" : '안녕 원명아! 지금 내 핸드폰번호로 발신하게 설정해보았어. 이 메세지가 너에게 닿길 바래.'
+            }
+        }
+    }
+    
+    url = 'https://dev-api.bizppurio.com/v3/message'
+    session = requests.Session()
+    session.verify=False
+    # return requests.post(url, headers=headers)
+    return session.post(url, headers=headers, data=json.dumps(body))
 
-print(len(a.text))
 
+send_complete = send_FT()
 
-
-a = get_token()
-print(a)
-print(a.request.headers)
-print(a.text)
+print(send_complete)
+print(send_complete.text)
