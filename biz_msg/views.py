@@ -1,8 +1,9 @@
 from django.shortcuts import render
 import base64
 import requests
+import ssl
 # Create your views here.
-
+ssl._create_default_https_context = ssl._create_unverified_context
 
 def get_token():
     dev_id_pw = 'lookin4u_dev:wearelk4u!'
