@@ -13,6 +13,7 @@ def get_token():
     headers = {
         'Authorization' : 'Basic {}'.format(encoded_id_pw),
         'Content-type' : 'application/json; charset=utf-8',
+        'Accept' : 'text/plain',
     }
     
     url = 'https://api.bizppurio.com/v1/token'
@@ -61,6 +62,7 @@ def send_FT():
             'ft':{
                 'senderkey' : sender_key,
                 "message" : '안녕 원명아! 지금 내 핸드폰번호로 발신하게 설정해보았어. 이 메세지가 너에게 닿길 바래.',
+                'adflag' : 'N',
                 'image':{
                     'img_url' : 'http://street-together.kro.kr/media/blog/images/2021/10/06/53DF48C5-BCC0-4D66-8AC6-5BC147094A57.jpeg',
                     'img_link' : 'http://street-together.kro.kr/'
